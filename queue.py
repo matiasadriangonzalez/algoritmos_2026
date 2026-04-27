@@ -16,25 +16,26 @@ class Queue:
     def on_front(self) -> Any:
         return self.__elements[0]
         
-    def move_to_end(self) -> None: #podria retornar None(vacio) o Any(cualqueir tipo de dato)
+    def move_to_end(self) -> Any: #podria retornar None(vacio) o Any(cualqueir tipo de dato)
         value = self.__elements.pop(0)
         self.__elements.append(value)
+        return value
 
     def show(self) -> None:
         for i in range(len(self.__elements)):
             value = self.move_to_end()
             print(value)      
 
-q = Queue()
+# q = Queue()
 
-q.arrive(3)
-q.arrive(4)
-print(q.attention())
-q.arrive(1)
-q.arrive(5)
-
-
+# q.arrive(3)
+# q.arrive(4)
+# print(q.attention())
+# q.arrive(1)
+# q.arrive(5)
 
 
-q.show()
-print(q.size())
+
+
+# q.show()
+# print(q.size())
