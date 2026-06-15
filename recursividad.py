@@ -8,32 +8,32 @@
 
 # #fac(N) = N * fac(N-1) -> fac(0) = 1 # si logramos encontrar esto en la moayoria de ejercicios ya tienen el ejercicio resuelto, porque a partird de aqui solo es cuestion de llamar a la funcion con el numero que queremos calcular y la funcion se va a encargar de hacer el resto del trabajo, es decir, llamar a la funcion con el numero anterior hasta llegar al caso base que es fac(0) = 1
 
-# def factorial_r(num: int) -> int:
-#     print(f'calculando factorial de {num}')
-#     a = input()
-#     if num == 0:
-#         print('se alcanzo condiocion de fin, devolver valor por defecto')
-#         a = input()
-#         return 1
-#     else:
-#         print(f'resolucion parcial para {num}, hacer llamada recursiva con {num - 1}')
-#         a = input()
-#         temporal = num * factorial_r(num-1) # lo mismo que tenemos mas arriba, siempre tiene que tener un return.
-#         print(f'se obtuvo resultado parcial {temporal} para {num}')
-#         a = input()
-#         return temporal
-# #debe tener una condicion clara de fin y llamarse a si misma
+def factorial_r(num: int) -> int:
+    print(f'calculando factorial de {num}')
+    a = input()
+    if num == 0:
+        print('se alcanzo condiocion de fin, devolver valor por defecto')
+        a = input()
+        return 1
+    else:
+        print(f'resolucion parcial para {num}, hacer llamada recursiva con {num - 1}')
+        a = input()
+        temporal = num * factorial_r(num-1) # lo mismo que tenemos mas arriba, siempre tiene que tener un return.
+        print(f'se obtuvo resultado parcial {temporal} para {num}')
+        a = input()
+        return temporal
+#debe tener una condicion clara de fin y llamarse a si misma
 
 
-# def factorial(num: int) -> int:
-#     result = 1
-#     for i in range(1, num + 1):
-#         result = result * i
+def factorial(num: int) -> int:
+    result = 1
+    for i in range(1, num + 1):
+        result = result * i
         
-#     return result
+    return result
 
-# print(factorial(5))
-# print(factorial_r(5))   
+print(factorial(5))
+print(factorial_r(5))   
 
 # #fibonacci recursiva
 # def fibonacci_r(num: int) -> int:

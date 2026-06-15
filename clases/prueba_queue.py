@@ -1,4 +1,4 @@
-from queue import Queue
+from queue_ import Queue
 from random import randint
 
 # ejercicio 1
