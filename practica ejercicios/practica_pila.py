@@ -1,3 +1,4 @@
+from clases import resumen_parcial
 from copy import copy, deepcopy
 from typing import Any
 from random import randint, choice, random

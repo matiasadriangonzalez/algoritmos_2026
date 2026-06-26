@@ -57,6 +57,26 @@ class List(list):
     def size(self) -> int:
         return len(self)
 
+     #agregados para el ejercicio 6.
+    def filter_contain_on_bio(self, values):
+        for element in self:
+            if any(value in element.biografia.lower() for value in values):
+                print(element)
+    
+    def filter_start_with(self, values, criterios = None):
+        criterion_function = self.__CRITERION_FUNCTION.get(criterios)
+        for element in self:
+            value = criterion_function(element) if criterion_function else element
+            if value.startswith(values):
+                print(element)
+
+                
+    def count_by(self, criterion, value):
+        count = 0
+        for element in self:
+            if self.__CRITERION_FUNCTION.get(criterion)(element) == value:
+                count += 1
+        return count
 
 
 # class Persona:
