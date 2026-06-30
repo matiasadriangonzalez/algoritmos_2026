@@ -415,7 +415,7 @@ def nombre_empiezan_s(queue: Queue) -> list:
 
     for _ in range(queue.size()):
         personaje = queue.on_front()
-        if personaje['personaje'][0] == 'S':
+        if personaje['personaje'].startswith('S'):
             nombresS.append(personaje)
         queue.move_to_end()
     

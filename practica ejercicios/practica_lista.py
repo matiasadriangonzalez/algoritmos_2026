@@ -37,21 +37,21 @@ from typing import Any
 
 #2. Diseñar un algoritmo que elimine todas las vocales que se encuentren en una lista de caracteres.
 
-# l = List()
-# for c in "parcial mañana":
-#     l.append(c)
+l = List()
+for c in "parcial mañana":
+    l.append(c)
 
-# def eliminar_vocales(lista: list) -> list:
-#     lista_sin_vocales = List()
-#     vocales = ['a','e','i','o','u']
+def eliminar_vocales(lista: list) -> list:
+    lista_sin_vocales = List()
+    vocales = ['a','e','i','o','u']
 
-#     for caracter in lista:
-#         if caracter not in vocales:
-#             lista_sin_vocales.append(caracter)
-#     return lista_sin_vocales
+    for caracter in lista:
+        if caracter not in vocales:
+            lista_sin_vocales.append(caracter)
+    return lista_sin_vocales
 
-# resultado = eliminar_vocales(l)
-# resultado.show()
+resultado = eliminar_vocales(l)
+resultado.show()
 
 #3. Dada una lista de números enteros, implementar un algoritmo para dividir dicha lista en dos,
 # una que contenga los números pares y otra para los números impares.
@@ -549,4 +549,375 @@ from typing import Any
 #             break
 
 # # j. debe modificar el TDA para implementar lista de lista. #no lo voy hacer, no lo entiendo.
+
+
+
+
+#10. Se dispone de una lista de canciones de Spotify, de las cuales se sabe su nombre, banda o artista, 
+# duración y cantidad de reproducciones durante el último mes. 
+# Desarrollar un algoritmo que permita realizar las siguientes actividades:
+# a. obtener la información de la canción más larga;
+# b. obtener el TOP 5, TOP 10 y TOP 40 de canciones más escuchadas;
+# c. obtener todas las canciones de la banda Arctic Monkeys;
+# d. mostrar los nombres de las bandas o artistas que solo son de una palabra.
+# canciones = [
+#     {'nombre': 'Shape of You', 'artista': 'Ed Sheeran', 'duracion': 233, 'reproducciones': 2995000000},
+#     {'nombre': 'Blinding Lights', 'artista': 'The Weeknd', 'duracion': 200, 'reproducciones': 3460000000},
+#     {'nombre': 'Bohemian Rhapsody', 'artista': 'Queen', 'duracion': 355, 'reproducciones': 1797000000},
+#     {'nombre': 'Hotel California', 'artista': 'Eagles', 'duracion': 390, 'reproducciones': 1500000000},
+#     {'nombre': '505', 'artista': 'Arctic Monkeys', 'duracion': 482, 'reproducciones': 890000000},
+#     {'nombre': 'Smells Like Teen Spirit', 'artista': 'Nirvana', 'duracion': 301, 'reproducciones': 1439000000},
+#     {'nombre': 'Sweet Child o Mine', 'artista': "Guns N'Roses", 'duracion': 356, 'reproducciones': 1173000000},
+#     {'nombre': 'One More Time', 'artista': 'Daft Punk', 'duracion': 320, 'reproducciones': 753000000},
+#     {'nombre': 'Back in Black', 'artista': 'AC/DC', 'duracion': 255, 'reproducciones': 673000000},
+#     {'nombre': 'Do I Wanna Know?', 'artista': 'Arctic Monkeys', 'duracion': 183, 'reproducciones': 1034000000}
+# ]
+
+# class Cancion:
+#     def __init__ (self, nombre, artista, duracion, reproducciones):
+#         self.nombre = nombre
+#         self.artista = artista
+#         self.duracion = duracion
+#         self.reproducciones = reproducciones
+
+#     def __str__ (self):
+#         return f'nombre: {self.nombre} | artista: {self.artista} | duracion: {self.duracion} | reproducciones: {self.reproducciones}'
+
+
+# def by_nombre(item): #vemos si sirve
+#     return item.nombre
+
+# def by_artista(item):
+#     return item.artista
+
+# def by_duracion(item):
+#     return item.duracion
+
+# def by_reproducciones(item):
+#     return item.reproducciones
+
+# l = List()
+
+# l.add_criterion('nombre', by_nombre)
+# l.add_criterion('artista', by_artista)
+# l.add_criterion('duracion', by_duracion)
+# l.add_criterion('reproducciones', by_reproducciones)
+
+# for i in canciones:
+#     l.append(Cancion(i['nombre'], i['artista'], i['duracion'], i['reproducciones']))
+
+# l.show()
+
+# #a. obtener la información de la canción más larga;
+# l.sort_by_criterion('duracion')
+# mas_larga = l[l.size() -1]
+# print(f'a) La cancion mas larga es: {mas_larga}')
+# print()
+
+# #b. obtener el TOP 5, TOP 10 y TOP 40 de canciones más escuchadas;
+# l.sort_by_criterion('reproducciones')
+# for top in [5, 10, 40]:
+#     print(f'\nb. TOP {top} canciones mas escuchadas: ')
+#     for i in range(min(top, l.size())):
+#         idx = l.size() -1 - i 
+#         cancion = l[idx]
+#         print(f'   {i+1}. {cancion.nombre} - {cancion.artista} ({cancion.reproducciones:,} reproducciones)')
+# print()
+
+# #c. obtener todas las canciones de la banda Arctic Monkeys;
+# print('c. canciones de arctic monkeys: ')
+# for cancion in l:
+#     if cancion.artista == "Arctic Monkeys":
+#         print(cancion)
+
+# #d. mostrar los nombres de las bandas o artistas que solo son de una palabra.
+# print('d. bandas o artistas de una palabra: ')
+# ya_mostrados = List()
+
+# for cancion in l:
+#     if len(cancion.artista.split()) == 1 and cancion.artista not in ya_mostrados:
+#         print(f'. {cancion.artista}')
+#         ya_mostrados.append(cancion.artista)
+
+
+# 11. Dada una lista que contiene información de los personajes de la saga de Star Wars con la si-
+# guiente información nombre, altura, edad, género, especie, planeta natal y episodios en los que
+# apareció, desarrollar los algoritmos que permitan realizar las siguientes actividades:
+# a. listar todos los personajes de género femenino;
+# b. listar todos los personajes de especie Droide que aparecieron en los primeros seis episo-
+# dios de la saga;
+# c. mostrar toda la información de Darth Vader y Han Solo;
+# d. listar los personajes que aparecen en el episodio VII y en los tres anteriores;
+# e. mostrar los personajes con edad mayor a 850 años y de ellos el mayor;
+# f. eliminar todos los personajes que solamente aparecieron en los episodios IV, V y VI;
+# g. listar los personajes de especie humana cuyo planeta de origen es Alderaan;
+# h. mostrar toda la información de los personajes cuya altura es menor a 70 centímetros;
+# i. determinar en qué episodios aparece Chewbacca y mostrar además toda su información.
+        
+# personajes_starwars = [
+    
+#     {'nombre': 'Luke Skywalker', 'altura': 172, 'edad': 19, 'genero': 'Masculino', 'especie': 'Humano', 'planeta_natal': 'Tatooine', 'episodios': [4, 5, 6, 7, 8, 9]},
+#     {'nombre': 'Leia Organa', 'altura': 150, 'edad': 19, 'genero': 'Femenino', 'especie': 'Humano', 'planeta_natal': 'Alderaan', 'episodios': [4, 5, 6, 7, 8, 9]},
+#     {'nombre': 'Han Solo', 'altura': 180, 'edad': 29, 'genero': 'Masculino', 'especie': 'Humano', 'planeta_natal': 'Corellia', 'episodios': [4, 5, 6, 7, 8, 9]},
+#     {'nombre': 'Chewbacca', 'altura': 228, 'edad': 200, 'genero': 'Masculino', 'especie': 'Wookiee', 'planeta_natal': 'Kashyyyk', 'episodios': [4, 5, 6, 7, 8, 9]},
+#     {'nombre': 'Darth Vader', 'altura': 202, 'edad': 45, 'genero': 'Masculino', 'especie': 'Humano', 'planeta_natal': 'Tatooine', 'episodios': [4, 5, 6, 1, 2, 3]},
+#     {'nombre': 'Obi-Wan Kenobi', 'altura': 182, 'edad': 38, 'genero': 'Masculino', 'especie': 'Humano', 'planeta_natal': 'Stewjon', 'episodios': [4, 5, 6, 1, 2, 3]},
+#     {'nombre': 'Yoda', 'altura': 66, 'edad': 900, 'genero': 'Masculino', 'especie': 'Desconocido', 'planeta_natal': 'Desconocido', 'episodios': [1, 2, 3, 4, 5, 6]},
+#     {'nombre': 'R2-D2', 'altura': 96, 'edad': 10, 'genero': 'Masculino', 'especie': 'Droide', 'planeta_natal': 'Naboo', 'episodios': [1, 2, 3, 4, 5, 6, 7, 8, 9]},
+#     {'nombre': 'C-3PO', 'altura': 167, 'edad': 10, 'genero': 'Masculino', 'especie': 'Droide', 'planeta_natal': 'Tatooine', 'episodios': [1, 2, 3, 4, 5, 6, 7, 8, 9]},
+#     {'nombre': 'BB-8', 'altura': 67, 'edad': 995, 'genero': 'Masculino', 'especie': 'Droide', 'planeta_natal': 'Desconocido', 'episodios': [7, 8, 9]},
+#     {'nombre': 'Rey', 'altura': 170, 'edad': 19, 'genero': 'Femenino', 'especie': 'Humano', 'planeta_natal': 'Jakku', 'episodios': [7, 8, 9]},
+#     {'nombre': 'Finn', 'altura': 178, 'edad': 23, 'genero': 'Masculino', 'especie': 'Humano', 'planeta_natal': 'Desconocido', 'episodios': [7, 8, 9]},
+#     {'nombre': 'Poe Dameron', 'altura': 178, 'edad': 27, 'genero': 'Masculino', 'especie': 'Humano', 'planeta_natal': 'Desconocido', 'episodios': [7, 8, 9]},
+#     {'nombre': 'Kylo Ren', 'altura': 189, 'edad': 23, 'genero': 'Masculino', 'especie': 'Humano', 'planeta_natal': 'Jakku', 'episodios': [4,5,6]},
+#     {'nombre': 'Lando Calrissian', 'altura': 177, 'edad': 31, 'genero': 'Masculino', 'especie': 'Humano', 'planeta_natal': 'Corellia', 'episodios': [4, 5, 6, 9]},
+#     {'nombre': 'Padmé Amidala', 'altura': 165, 'edad': 14, 'genero': 'Femenino', 'especie': 'Humano', 'planeta_natal': 'Naboo', 'episodios': [1, 2, 3]},
+#     {'nombre': 'Anakin Skywalker', 'altura': 185, 'edad': 22, 'genero': 'Masculino', 'especie': 'Humano', 'planeta_natal': 'Tatooine', 'episodios': [1, 2, 3, 4, 5, 6]},
+#     {'nombre': 'Palpatine', 'altura': 173, 'edad': 88, 'genero': 'Masculino', 'especie': 'Humano', 'planeta_natal': 'Naboo', 'episodios': [1, 2, 3, 4, 5, 6, 7, 8, 9]},
+#     {'nombre': 'Mace Windu', 'altura': 182, 'edad': 52, 'genero': 'Masculino', 'especie': 'Humano', 'planeta_natal': 'Haruun Kal', 'episodios': [1, 2, 3]},
+#     {'nombre': 'Captain Phasma', 'altura': 188, 'edad': 29, 'genero': 'Femenino', 'especie': 'Humano', 'planeta_natal': 'Alderaan', 'episodios': [7, 8]}
+# ]
+
+
+# class Personaje_starwars:
+#     def __init__(self, nombre, altura, edad, genero, especie, planeta_natal, episodios):
+#         self.nombre = nombre
+#         self.altura = altura
+#         self.edad = edad
+#         self.genero = genero
+#         self.especie = especie
+#         self.planeta_natal = planeta_natal
+#         self.episodios = episodios
+    
+#     def __str__(self):
+#         return f'nombre: {self.nombre} | altura: {self.altura} | edad: {self.edad} | genero: {self.genero} | especie: {self.especie} | planeta natal: {self.planeta_natal} | episodios: {self.episodios}'
+
+
+
+
+# def by_nombre(item):
+#     return item.nombre
+
+# def by_edad(item):
+#     return item.edad
+
+# def by_altura(item):
+#     return item.altura
+
+# l = List()
+# l.add_criterion('nombre', by_nombre)
+# l.add_criterion('edad', by_edad)
+# l.add_criterion('altura', by_altura)
+# for i in personajes_starwars:
+#     l.append(Personaje_starwars(i['nombre'], i['altura'], i['edad'], i['genero'], i['especie'], i['planeta_natal'], i['episodios']))
+
+# # a. listar todos los personajes de género femenino;
+# print('a. personajes de genero femenino: ')
+# for personaje in l:
+#     if personaje.genero == 'Femenino':    
+#         print(f'- {personaje.nombre}')
+# print()
+
+# #b. listar todos los personajes de especie Droide que aparecieron en los primeros seis episo-
+# # dios de la saga;
+# print('b. Droide que aparecieron en los primeros 6 episodios: ')
+# for personaje in l:
+#     if personaje.especie == 'Droide' and any(ep <= 6 for ep in personaje.episodios):
+#         print(f'- {personaje.nombre}')
+# print()
+
+# #c. mostrar toda la información de Darth Vader y Han Solo;
+# print('c. Darth Vader y Han Solo')
+# l.sort_by_criterion('nombre')
+# Darth_Vader = l.search('Darth Vader', 'nombre')
+# Han_solo = l.search('Han Solo', 'nombre')
+# if Darth_Vader is not None:
+#     print(l[Darth_Vader])
+# else:
+#     print('Darth Vader no encontrado')
+# if Han_solo is not None:
+#     print(l[Han_solo])
+# else:
+#     print('Han Solo no encontrado')
+# print()
+
+# # d. listar los personajes que aparecen en el episodio VII y en los tres anteriores;
+# print('d. personajes que aparecen en el episodio VII y en los tres anteriores: ')
+# for personaje in l:
+#     if 7 in personaje.episodios and 4 in personaje.episodios and 5 in personaje.episodios and 6 in personaje.episodios:
+#         print(f'- {personaje.nombre}')
+# print()
+
+# #e. mostrar los personajes con edad mayor a 850 años y de ellos el mayor;
+# print('e. personajes con edad mayor a 850 años y el mayor: ')
+# l.sort_by_criterion('edad')
+# for personaje in l:
+#     if personaje.edad > 850:
+#         print(f'-{personaje.nombre}')
+        
+# print(f'-el mayor es {l[-1].nombre}')
+
+# #f. eliminar todos los personajes que solamente aparecieron en los episodios IV, V y VI;
+# print('f. eliminar todos los personajes que solamente aparecieron en los episodios IV, V y VI:')
+# a_eliminar = []
+# for personaje in l:
+#     solo_456 = True
+#     for ep in personaje.episodios:
+#         if ep not in [4,5,6]:
+#             solo_456 = False
+#             break
+#     if solo_456:
+#         a_eliminar.append(personaje.nombre)
+
+# for nombre in a_eliminar:
+#     l.sort_by_criterion('nombre')
+#     eliminado = l.delete_value(nombre, 'nombre')
+#     print(f'-personaje eliminado: {eliminado.nombre}')
+
+# print(a_eliminar)
+# print()
+
+# #g. listar los personajes de especie humana cuyo planeta de origen es Alderaan;
+# print('g. personajes de especie humana cuyo planeta de origen es Alderaan: ')
+# for personajes in l:
+#     if personajes.especie == 'Humano' and personajes.planeta_natal == 'Alderaan':
+#         print(f'- {personajes.nombre}')
+# print()
+
+# #h. mostrar toda la información de los personajes cuya altura es menor a 70 centímetros;
+# print('h. personajes con altura menor a 70 cm:')
+# l.sort_by_criterion('altura')
+# for personaje in l:
+#     if personaje.altura < 70:
+#         print(f'- {personaje}')
+# print()
+
+# #i. determinar en qué episodios aparece Chewbacca y mostrar además toda su información.
+# print('i. episodios en los que aparece Chewbacca')
+# l.sort_by_criterion('nombre')
+# Chewbacca = l.search('Chewbacca', 'nombre')
+
+# if Chewbacca is not None:
+#     print(f" episodios en los que aparece Chewbacca: {l[Chewbacca].episodios}")
+#     print(l[Chewbacca])
+# else:
+#     print('Chewbacca no encontrado')
+# print()
+
+
+#16. Se deben administrar las actividades de un proyecto de software, de estas se conoce su costo,
+# tiempo de ejecución, fecha de inicio, fecha de fin estimada, fecha de fin efectiva y persona a
+# cargo. Desarrollar un algoritmo que realice las siguientes actividades:
+# a. tiempo promedio de tareas;
+# b. costo total del proyecto;
+# c. actividades realizadas por una determinada persona;
+# d. mostrar la información de las tareas a realizar entre dos fechas dadas;
+# e. mostrar las tareas finalizadas en tiempo y las finalizadas fuera de tiempo;
+# f. indicar cuántas tareas le quedan pendientes a una determinada persona, indicada por
+# el usuario.
+
+# actividades = [
+#     {'nombre': 'Relevamiento de requisitos',   'costo': 5000,  'tiempo_ejecucion': 10, 'fecha_inicio': '2024-01-05', 'fecha_fin_estimada': '2024-01-15', 'fecha_fin_efectiva': '2024-01-14', 'persona_cargo': 'Ana Lopez'},
+#     {'nombre': 'Diseño de base de datos',      'costo': 8000,  'tiempo_ejecucion': 15, 'fecha_inicio': '2024-01-16', 'fecha_fin_estimada': '2024-01-31', 'fecha_fin_efectiva': '2024-02-05', 'persona_cargo': 'Carlos Perez'},
+#     {'nombre': 'Desarrollo del backend',       'costo': 20000, 'tiempo_ejecucion': 30, 'fecha_inicio': '2024-02-01', 'fecha_fin_estimada': '2024-03-02', 'fecha_fin_efectiva': '2024-03-01', 'persona_cargo': 'Ana Lopez'},
+#     {'nombre': 'Desarrollo del frontend',      'costo': 15000, 'tiempo_ejecucion': 25, 'fecha_inicio': '2024-02-10', 'fecha_fin_estimada': '2024-03-06', 'fecha_fin_efectiva': '2024-03-10', 'persona_cargo': 'Maria Gomez'},
+#     {'nombre': 'Testing y QA',                 'costo': 7000,  'tiempo_ejecucion': 12, 'fecha_inicio': '2024-03-07', 'fecha_fin_estimada': '2024-03-19', 'fecha_fin_efectiva': '2024-03-18', 'persona_cargo': 'Carlos Perez'},
+#     {'nombre': 'Despliegue en produccion',     'costo': 3000,  'tiempo_ejecucion': 5,  'fecha_inicio': '2024-03-20', 'fecha_fin_estimada': '2024-03-25', 'fecha_fin_efectiva': None,          'persona_cargo': 'Ana Lopez'},
+#     {'nombre': 'Capacitacion a usuarios',      'costo': 4000,  'tiempo_ejecucion': 8,  'fecha_inicio': '2024-03-26', 'fecha_fin_estimada': '2024-04-03', 'fecha_fin_efectiva': None,          'persona_cargo': 'Maria Gomez'},
+#     {'nombre': 'Documentacion del sistema',    'costo': 2500,  'tiempo_ejecucion': 7,  'fecha_inicio': '2024-01-20', 'fecha_fin_estimada': '2024-01-27', 'fecha_fin_efectiva': '2024-01-30', 'persona_cargo': 'Maria Gomez'},
+# ]
+
+# class actividad:
+#     def __init__(self, nombre, costo, tiempo_ejecucion, fecha_inicio, fecha_fin_estimada, fecha_fin_efectiva, persona_cargo):
+#         self.nombre = nombre
+#         self.costo = costo
+#         self.tiempo_ejecucion = tiempo_ejecucion
+#         self.fecha_inicio = fecha_inicio
+#         self.fecha_fin_estimada = fecha_fin_estimada
+#         self.fecha_fin_efectiva = fecha_fin_efectiva
+#         self.persona_cargo = persona_cargo
+
+#     def __str__(self):
+#         return f'nombre: {self.nombre} | costo: {self.costo} | tiempo_ejecucion: {self.tiempo_ejecucion} | fecha_inicio: {self.fecha_inicio} | fecha_fin_estimada: {self.fecha_fin_estimada} | fecha_fin_efectiva: {self.fecha_fin_efectiva} | persona_cargo: {self.persona_cargo}'
+
+
+# def by_persona_cargo(item):
+#     return item.persona_cargo
+
+# def by_fecha_inicio(item):
+#     return item.fecha_inicio
+
+# l = List()
+# l.add_criterion('persona_cargo', by_persona_cargo)
+# l.add_criterion('fecha_inicio', by_fecha_inicio)
+
+# for i in actividades:
+#     l.append(actividad(i['nombre'], i['costo'], i['tiempo_ejecucion'], i['fecha_inicio'], i['fecha_fin_estimada'], i['fecha_fin_efectiva'], i['persona_cargo']))
+
+# #a. tiempo promedio de tareas;
+# print('a. tiempo promedio de tareas: ')
+# suma = 0
+# for actividad in l:
+#     suma += actividad.tiempo_ejecucion
+# promedio = suma / l.size()
+# print(f'-el tiempo promedio de tareas es: {promedio} ') 
+# print()
+
+# #b. costo total del proyecto;
+# print('b. costo total del proyecto:')
+# suma = 0
+# for actividad in l:
+#     suma += actividad.costo
+# print(f'- el costo total del proyecto es: ${suma}')
+# print()
+
+# #c. actividades realizadas por una determinada persona;
+# print('c. actividades realizadas por una determinada persona:')
+# nombre_buscar = str(input('ingrese la persona a buscar: '))
+# existe = l.search(nombre_buscar, 'persona_cargo')
+
+# if existe is None:
+#     print(f'la persona {nombre_buscar} no existe en la lista')
+# else:
+#     print(f'la persona {nombre_buscar} trabajo en las actividades: ')
+#     for actividad in l:
+#         if actividad.persona_cargo == nombre_buscar:
+#             print(f'-{actividad.nombre}')
+# print()
+
+# #d. mostrar la información de las tareas a realizar entre dos fechas dadas;
+# fecha_desde = str(input('ingrese la fecha inicio (formato ej: 2024-01-01): '))
+# fecha_hasta = str(input('ingrese la fecha fin (formato ej: 2024-01-01): '))
+
+# l.sort_by_criterion('fecha_inicio')
+# print(f'tareas entre {fecha_desde} y {fecha_hasta}:')
+# for actividad in l:
+#     if fecha_desde <= actividad.fecha_inicio <= fecha_hasta:
+#         print(f'- {actividad}')
+# print()
+
+# #e. mostrar las tareas finalizadas en tiempo y las finalizadas fuera de tiempo;
+# print('e. tareas finalizadas en tiempo y fuera de tiempo:')
+# print('tareas finalizadas en tiempo: ')
+# for actividad in l:
+#     if actividad.fecha_fin_efectiva is not None and actividad.fecha_fin_efectiva > actividad.fecha_fin_estimada:
+#         print(f'- {actividad.nombre}')
+
+
+# #f. indicar cuántas tareas le quedan pendientes a una determinada persona, indicada por
+# # el usuario.
+# print('f. tareas pendientes de cada persona')
+# nombre_buscar = str(input('ingrese la persona a buscar: '))
+# l.sort_by_criterion('persona_cargo')
+# existe = l.search(nombre_buscar, 'persona_cargo')
+
+# if existe is None:
+#     print(f'la persona {nombre_buscar} no existe en la lista')
+# else:
+#     pendientes = 0
+#     for actividad in l:
+#         if actividad.persona_cargo == nombre_buscar and actividad.fecha_fin_efectiva is None:
+#             pendientes += 1
+#     print(f'la persona {nombre_buscar} tiene {pendientes} tareas pendientes')
+# print()
 
