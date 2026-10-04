@@ -1,8 +1,8 @@
 
 # Importamos tu clase List desde el archivo list_.py
-import dataclasses
-from list_ import List
-from typing import Any
+# import dataclasses
+# from list_ import List
+# from typing import Any
 
 # ============================================================
 # 4. LISTA (List)
@@ -37,21 +37,21 @@ from typing import Any
 
 #2. Diseñar un algoritmo que elimine todas las vocales que se encuentren en una lista de caracteres.
 
-l = List()
-for c in "parcial mañana":
-    l.append(c)
+# l = List()
+# for c in "parcial mañana":
+#     l.append(c)
 
-def eliminar_vocales(lista: list) -> list:
-    lista_sin_vocales = List()
-    vocales = ['a','e','i','o','u']
+# def eliminar_vocales(lista: list) -> list:
+#     lista_sin_vocales = List()
+#     vocales = ['a','e','i','o','u']
 
-    for caracter in lista:
-        if caracter not in vocales:
-            lista_sin_vocales.append(caracter)
-    return lista_sin_vocales
+#     for caracter in lista:
+#         if caracter not in vocales:
+#             lista_sin_vocales.append(caracter)
+#     return lista_sin_vocales
 
-resultado = eliminar_vocales(l)
-resultado.show()
+# resultado = eliminar_vocales(l)
+# resultado.show()
 
 #3. Dada una lista de números enteros, implementar un algoritmo para dividir dicha lista en dos,
 # una que contenga los números pares y otra para los números impares.
