@@ -1,3 +1,7 @@
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 # 6. Dada una lista de superhéroes de comics, de los cuales se conoce su nombre, año aparición,
 # casa de comic a la que pertenece (Marvel o DC) y biografía, implementar la funciones necesarias 
 # para poder realizar las siguientes actividades:
@@ -196,7 +200,7 @@ for e in entrenadores:
 #l_entrenadores.show()
 
 # # a. obtener la cantidad de Pokémons de un determinado entrenador;
-# buscar_entrenador = input('ingrese nombre del entrenador: ')
+buscar_entrenador = input('ingrese nombre del entrenador: ')
 pos = l_entrenadores.search(buscar_entrenador, 'nombre_entrenador')
 
 if pos is not None:
