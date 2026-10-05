@@ -283,6 +283,69 @@ class BinaryTree():
         return count
 
 
+        #ejercicio 23
+    def inorden_criaturas(self) -> None:
+
+        def __inorden_criaturas(root):
+            if root.left is not None:
+                __inorden_criaturas(root.left)
+            print(root.value, '-', root.other_values['derrotado_por'])
+            if root.right is not None:
+                __inorden_criaturas(root.right)
+        __inorden_criaturas(self.root)
+
+    def contar_derrotas(self) -> dict:
+        conteo = {}
+
+        def __contar_derrotas(root):
+            if root.left is not None:
+                __contar_derrotas(root.left)
+            heroe = root.other_values['derrotado_por']
+            if heroe is not None:
+                conteo[heroe] = conteo.get(heroe, 0) + 1
+            if root.right is not None:
+                __contar_derrotas(root.right)
+
+        __contar_derrotas(self.root)
+        return conteo
+
+    def inorden_derrotado_por(self, heroe: str) -> None:
+
+        def __inorden_derrotado_por(root, heroe):
+            if root.left is not None:
+                __inorden_derrotado_por(root.left, heroe)
+            if root.other_values['derrotado_por'] == heroe:
+                print(root.value)
+            if root.right is not None:
+                __inorden_derrotado_por(root.right, heroe)
+
+        __inorden_derrotado_por(self.root, heroe)
+
+    def inorden_no_derrotadas(self) -> None:
+
+        def __inorden_no_derrotadas(root):
+            if root.left is not None:
+                __inorden_no_derrotadas(root.left)
+            if root.other_values['derrotado_por'] is None :
+                print(root.value)
+            if root.right is not None:
+                __inorden_no_derrotadas(root.right)
+
+        __inorden_no_derrotadas(self.root)
+
+    def inorden_capturada_por(self, heroe: str) -> None:
+
+        def __inorden_capturada_por(root, heroe):
+            if root.left is not None:
+                __inorden_capturada_por(root.left, heroe)
+            if root.other_values['capturada'] == heroe:
+                print(root.value)
+            if root.right is not None:
+                __inorden_capturada_por(root.right, heroe)
+
+        __inorden_capturada_por(self.root, heroe)
+
+
 
 
 
